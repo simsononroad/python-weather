@@ -1,0 +1,13 @@
+html{
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("../imgs/background.png");
+    background-repeat: repeat;
+    background-size: 100%;
+}
+.brand_name {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    justify-content: center;
+}
