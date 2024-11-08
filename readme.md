@@ -1,7 +1,7 @@
 | linux hu | linux en |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| [v1.0](https://github.com/simsononroad/python-weather/releases/tag/linux_hu_1.0)  |  Cell  |
+
 
 # 
 # English
