@@ -9,6 +9,7 @@ import customtkinter
 import tkintermapview
 import sqlite3
 import datetime
+import CTkTable
 
 
 
@@ -55,13 +56,7 @@ try:
         #print(times)
         cur.execute("SELECT * FROM weather;")
         data = cur.fetchall()
-        save_time = data[0][0]
-        city = data[1]
-        temp = data[0][2]
-        feels_like = data[0][3]
-        sky_description = data[0][4]
-        wind_speed = data[0][5]
-        humidity = data[0][6]
+
 
         history_window = customtkinter.CTk()
         history_window.geometry("1000x650")
@@ -101,7 +96,7 @@ try:
 
         def reszletes():
             for datas in data:
-                print(datas)
+                pass
         dark = customtkinter.CTkButton(master=history_window,
                                     width=120,
                                     height=32,
@@ -111,7 +106,40 @@ try:
                                     hover_color="lightblue",
                                     command=reszletes)
 
+        
         dark.place(relx=0, rely=0)
+        
+        print(data)
+        value = [["Idő", "Város", "Hőmérséklet", "Hőérzet", "Égkép", "Szélsebesség", "Páratartalom"],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""],
+                 ["","","","","","","",""]]             #FIXME: Ne csak előre definiált értékekkel működjön
+        
+        row_to_add = 1
+        for adat in data:
+            print(row_to_add)
+            value[row_to_add][0] = adat[0]
+            value[row_to_add][1] = adat[1]
+            value[row_to_add][2] = adat[2]
+            value[row_to_add][3] = adat[3]
+            value[row_to_add][4] = adat[4]
+            value[row_to_add][5] = adat[5]
+            value[row_to_add][6] = adat[6]
+            row_to_add += 1
+        
+        print(value)
+    
+            
+
+        
+
+        table = CTkTable.CTkTable(master=history_window, values=value, hover_color="red", row=3)
+        table.pack(expand=True, fill="both", padx=5, pady=20)
 
         history_window.mainloop()
         
